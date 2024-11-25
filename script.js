@@ -10,10 +10,10 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 400; // Vertical starting position for first dotted circle
-const verticalSpacing = 100; // Vertical spacing between each line of sublevels
-const dottedCircleSize = 50; // SMALL size for the dotted circles
-const sublevelSpacing = 50; // 1 cm spacing for sublevels
+const baseTopOffset = 100; // Raise dotted circles higher
+const verticalSpacing = 100; // Space between each dotted circle
+const dottedCircleSize = 150; // Make the dotted circles larger
+const sublevelSpacing = 50; // Keep 1 cm spacing for sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -22,9 +22,10 @@ energyLevels.forEach((level, i) => {
     circle.classList.add("energy-level");
 
     // Set the size of the dotted circle
-    circle.style.width = `${dottedCircleSize}px`;
-    circle.style.height = `${dottedCircleSize}px`;
-    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position vertically
+    const size = dottedCircleSize + i * 50; // Larger size for higher levels
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Move circles higher
     circle.style.left = `50%`; // Center horizontally
     circle.style.transform = `translate(-50%, 0)`; // Center horizontally
 
@@ -42,7 +43,7 @@ energyLevels.forEach((level, i) => {
         const xOffset = sublevelSpacing * j; // 1 cm spacing between sublevels
         sub.style.position = "absolute";
         sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelSpacing) / 2}px)`;
-        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Align all horizontally
+        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Align horizontally
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
