@@ -10,10 +10,10 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 100; // Raise dotted circles higher
-const verticalSpacing = 100; // Space between each dotted circle
-const dottedCircleSize = 150; // Make the dotted circles larger
-const sublevelSpacing = 50; // Keep 1 cm spacing for sublevels
+const baseTopOffset = 50; // Move everything higher on the page
+const verticalSpacing = 15; // Smaller spacing between lines (1/4 cm)
+const dottedCircleSize = 200; // Larger dotted circles to "hold" sublevels
+const sublevelSpacing = 50; // Keep 1 cm horizontal spacing for sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -25,9 +25,9 @@ energyLevels.forEach((level, i) => {
     const size = dottedCircleSize + i * 50; // Larger size for higher levels
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
-    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Move circles higher
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Move higher and reduce spacing
     circle.style.left = `50%`; // Center horizontally
-    circle.style.transform = `translate(-50%, 0)`; // Center horizontally
+    circle.style.transform = `translate(-50%, 0)`; // Align horizontally
 
     // Add sublevels to the circle
     level.sublevels.forEach((sublevel, j) => {
