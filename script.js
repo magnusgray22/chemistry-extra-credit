@@ -10,9 +10,9 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 400; // Position of the first horizontal line near the bottom
-const verticalSpacing = 50; // Spacing between each horizontal line
-const sublevelHorizontalSpacing = 150; // Horizontal spacing between sublevels
+const baseTopOffset = 200; // Position the first 's' in the top half of the main circle
+const verticalSpacing = 5; // 1/2 cm (5px) spacing between lines
+const sublevelHorizontalSpacing = 150; // Space between sublevels on the same line
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
