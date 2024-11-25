@@ -1,6 +1,19 @@
 const diagram = document.getElementById("diagram");
 const info = document.getElementById("info");
 
+// Add Magnus Gray, Boston Heal, and B4
+const footerText = document.createElement("div");
+footerText.style.position = "absolute";
+footerText.style.bottom = "10px"; // Position near the bottom
+footerText.style.left = "50%"; // Center horizontally
+footerText.style.transform = "translateX(-50%)"; // Adjust for centering
+footerText.style.fontSize = "18px"; // Adjust text size
+footerText.style.fontWeight = "bold"; // Bold text
+footerText.textContent = "Magnus Gray, Boston Heal, B4";
+
+// Append to the diagram
+diagram.appendChild(footerText);
+
 // Energy levels and sublevels data
 const energyLevels = [
     { level: 1, sublevels: ["s"], electrons: [2] },
