@@ -30,7 +30,7 @@ main {
     position: relative;
     width: 400px;
     height: 400px;
-    margin: 40px auto; /* Adds space below the header */
+    margin-top: 100px; /* Pushes the diagram lower on the page */
     background: #e0fbfc;
     border-radius: 50%;
     border: 2px solid #005f73;
