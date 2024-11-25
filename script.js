@@ -16,12 +16,12 @@ energyLevels.forEach((level, i) => {
     circle.classList.add("energy-level");
     circle.style.width = `${150 + i * 100}px`; // Adjust size incrementally
     circle.style.height = `${150 + i * 100}px`;
-    circle.style.top = `${150 + i * 60}px`; // Lower circles a bit for readability
-    circle.style.left = `250px`; // Center circles horizontally
+    circle.style.top = `${150 + i * 70}px`; // Drop circles slightly lower
+    circle.style.left = `250px`; // Center horizontally
 
     // Add sublevels
     const sublevelAngleStep = 360 / level.sublevels.length; // Even spacing for sublevels
-    const radius = (150 + i * 100) / 2 - 50; // Keep sublevels within dotted circle
+    const radius = (150 + i * 100) / 2 - 40; // Keep sublevels within the circle boundary
 
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
@@ -32,14 +32,14 @@ energyLevels.forEach((level, i) => {
         const angle = j * sublevelAngleStep;
 
         // Calculate position based on angle and radius
-        const x = 250 + radius * Math.cos((angle * Math.PI) / 180) - sub.offsetWidth / 2;
-        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - sub.offsetHeight / 2;
+        const x = 250 + radius * Math.cos((angle * Math.PI) / 180) - 25; // Adjust for sublevel size
+        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - 25;
 
         // Apply position
         sub.style.left = `${x}px`;
         sub.style.top = `${y}px`;
 
-        // Hover effect
+        // Add hover effect
         sub.addEventListener("mouseover", () => {
             info.innerHTML = `<h2>Sublevel: ${sublevel.toUpperCase()}</h2><p>Electrons: ${level.electrons[j]}</p>`;
         });
