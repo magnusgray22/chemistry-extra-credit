@@ -14,32 +14,37 @@ energyLevels.forEach((level, i) => {
     // Create the energy level circle
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
-    circle.style.width = `${150 + i * 100}px`; // Adjust size incrementally
+
+    // Set energy level size
+    circle.style.width = `${150 + i * 100}px`; // Increase size incrementally
     circle.style.height = `${150 + i * 100}px`;
-    circle.style.top = `${150 + i * 70}px`; // Drop circles slightly lower
+
+    // Drop circles lower on the page
+    circle.style.top = `${200 + i * 70}px`;
     circle.style.left = `250px`; // Center horizontally
 
     // Add sublevels
-    const sublevelAngleStep = 360 / level.sublevels.length; // Even spacing for sublevels
-    const radius = (150 + i * 100) / 2 - 40; // Keep sublevels within the circle boundary
+    const sublevelSpacing = 90; // Fixed horizontal spacing for sublevels
+    const baseRadius = (150 + i * 100) / 2 - 50; // Sublevels stay inside the circle
 
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
+
+        // Dynamically adjust sublevel size
+        const sizeIncrement = 10 * j; // Each subsequent sublevel grows slightly
+        const sublevelSize = 40 + sizeIncrement;
+
+        // Apply size and position
+        sub.style.width = `${sublevelSize}px`;
+        sub.style.height = `${sublevelSize}px`;
+        sub.style.left = `${250 + j * sublevelSpacing}px`; // Position evenly spaced
+        sub.style.top = `${300 + i * 70}px`; // Align sublevels on the same line
+
+        // Add text to sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
 
-        // Dynamically calculate angle for sublevel
-        const angle = j * sublevelAngleStep;
-
-        // Calculate position based on angle and radius
-        const x = 250 + radius * Math.cos((angle * Math.PI) / 180) - 25; // Adjust for sublevel size
-        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - 25;
-
-        // Apply position
-        sub.style.left = `${x}px`;
-        sub.style.top = `${y}px`;
-
-        // Add hover effect
+        // Hover effect
         sub.addEventListener("mouseover", () => {
             info.innerHTML = `<h2>Sublevel: ${sublevel.toUpperCase()}</h2><p>Electrons: ${level.electrons[j]}</p>`;
         });
