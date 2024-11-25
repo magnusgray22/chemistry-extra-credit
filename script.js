@@ -24,8 +24,8 @@ const energyLevels = [
 
 // Layout settings
 const baseTopOffset = 100; // Start at the top of the main background circle
-const verticalSpacing = 80; // Vertical spacing between rows
-const sublevelHorizontalSpacing = 120; // Horizontal spacing between sublevels
+const verticalSpacing = 70; // Vertical spacing between rows
+const sublevelHorizontalSpacing = 100; // Horizontal spacing between sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
