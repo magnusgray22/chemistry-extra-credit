@@ -30,7 +30,7 @@ main {
     position: relative;
     width: 400px;
     height: 400px;
-    margin: 20px auto;
+    margin: 40px auto; /* Adds space below the header */
     background: #e0fbfc;
     border-radius: 50%;
     border: 2px solid #005f73;
@@ -46,8 +46,6 @@ main {
 /* Sublevel Styles */
 .sublevel {
     position: absolute;
-    width: 40px;
-    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,10 +58,15 @@ main {
     border: 2px solid white;
 }
 
-.sublevel.s { background: #ff6b6b; }
-.sublevel.p { background: #6bffb8; }
-.sublevel.d { background: #6b8bff; }
-.sublevel.f { background: #ffbf6b; }
+/* Unique Sizes for Sublevels */
+.sublevel.s, .sublevel.p {
+    font-size: 0.8rem;
+}
+
+.sublevel.s { background: #ff6b6b; width: 40px; height: 40px; }
+.sublevel.p { background: #6bffb8; width: 60px; height: 60px; }
+.sublevel.d { background: #6b8bff; width: 80px; height: 80px; }
+.sublevel.f { background: #ffbf6b; width: 100px; height: 100px; }
 
 /* Info Section */
 #info {
