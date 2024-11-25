@@ -15,6 +15,7 @@ header {
 
 header h1 {
     margin: 0;
+    font-size: 2rem;
 }
 
 main {
@@ -26,8 +27,8 @@ main {
 
 #diagram {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     margin: 20px auto;
     background: #e0fbfc;
     border-radius: 50%;
@@ -45,16 +46,24 @@ main {
     display: inline-block;
     padding: 5px;
     margin: 5px;
-    background: #98c1d9;
-    border: 1px solid #3d5a80;
     border-radius: 50%;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
     cursor: pointer;
 }
 
 #info {
     margin-top: 20px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #005f73;
     background: #edf2f4;
     width: 80%;
+    font-size: 1.2rem;
 }
+
+/* Colors for each sublevel */
+.sublevel.s { background: #ff6b6b; }
+.sublevel.p { background: #6bffb8; }
+.sublevel.d { background: #6b8bff; }
+.sublevel.f { background: #ffbf6b; }
