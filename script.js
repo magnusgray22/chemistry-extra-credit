@@ -10,10 +10,11 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 50; // Move everything higher on the page
-const verticalSpacing = 15; // Smaller spacing between lines
-const dottedCircleSize = 200; // Larger dotted circles to "hold" sublevels
-const sublevelHorizontalSpacing = 100; // Farther horizontal spacing between sublevels
+const baseTopOffset = 100; // Vertical starting position for the first dotted circle
+const verticalSpacing = 150; // Vertical spacing between each dotted circle
+const dottedCircleSize = 100; // Base size for the smallest dotted circle
+const circleSizeIncrement = 75; // Increment for larger dotted circles
+const sublevelHorizontalSpacing = 150; // Farther horizontal spacing for sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -22,12 +23,12 @@ energyLevels.forEach((level, i) => {
     circle.classList.add("energy-level");
 
     // Set the size of the dotted circle
-    const size = dottedCircleSize + i * 50; // Larger size for higher levels
+    const size = dottedCircleSize + i * circleSizeIncrement; // Larger size for each level
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
-    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Move higher and reduce spacing
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position each level higher
     circle.style.left = `50%`; // Center horizontally
-    circle.style.transform = `translate(-50%, 0)`; // Align horizontally
+    circle.style.transform = `translate(-50%, 0)`; // Align center horizontally
 
     // Add sublevels to the circle
     level.sublevels.forEach((sublevel, j) => {
@@ -39,16 +40,12 @@ energyLevels.forEach((level, i) => {
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
-        // Position sublevels around the dotted line
-        const radius = size / 2; // Radius of the dotted circle
-        const angle = j * (360 / level.sublevels.length); // Spread sublevels evenly
-        const xOffset = radius * Math.cos((angle * Math.PI) / 180); // Calculate X position
-        const yOffset = radius * Math.sin((angle * Math.PI) / 180); // Calculate Y position
-
-        // Apply positions to touch the dotted line
+        // Position sublevels horizontally on the dotted circle
+        const xOffset = sublevelHorizontalSpacing * j; // Space sublevels horizontally
+        const yOffset = size / 2 - sublevelSize / 2; // Place sublevels on the dotted circle
         sub.style.position = "absolute";
-        sub.style.left = `calc(50% + ${xOffset - sublevelSize / 2}px)`;
-        sub.style.top = `${baseTopOffset + i * verticalSpacing + yOffset - sublevelSize / 2}px`;
+        sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelHorizontalSpacing) / 2}px)`;
+        sub.style.top = `${baseTopOffset + i * verticalSpacing - yOffset}px`;
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
