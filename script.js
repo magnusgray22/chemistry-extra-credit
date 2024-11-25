@@ -10,9 +10,9 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 200; // Position the first 's' in the top half of the main circle
-const verticalSpacing = 5; // 1/2 cm (5px) spacing between lines
-const sublevelHorizontalSpacing = 150; // Space between sublevels on the same line
+const baseTopOffset = 100; // Start at the top of the main background circle
+const verticalSpacing = 80; // Vertical spacing between rows
+const sublevelHorizontalSpacing = 120; // Horizontal spacing between sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -30,7 +30,7 @@ energyLevels.forEach((level, i) => {
         const xOffset = sublevelHorizontalSpacing * j; // Space sublevels horizontally
         sub.style.position = "absolute";
         sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelHorizontalSpacing) / 2}px)`; // Center horizontally
-        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position vertically
+        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position each row below the previous one
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
