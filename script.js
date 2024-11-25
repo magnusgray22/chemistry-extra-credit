@@ -10,18 +10,12 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 20; // Position of the first horizontal line
-const verticalSpacing = 30; // Spacing between each horizontal line
-const dottedCircleSize = 50; // Base size for smaller dotted circles
-const sublevelHorizontalSpacing = 80; // Space between sublevels on the same line
+const baseTopOffset = 400; // Position of the first horizontal line near the bottom
+const verticalSpacing = 50; // Spacing between each horizontal line
+const sublevelHorizontalSpacing = 150; // Horizontal spacing between sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
-    // Create the energy level (dotted) circle
-    const circle = document.createElement("div");
-    circle.classList.add("energy-level");
-
-
     // Add sublevels to the horizontal line
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
@@ -32,11 +26,11 @@ energyLevels.forEach((level, i) => {
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
-        // Position sublevels horizontally
+        // Position sublevels horizontally and center them within the main background circle
         const xOffset = sublevelHorizontalSpacing * j; // Space sublevels horizontally
         sub.style.position = "absolute";
-        sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelHorizontalSpacing) / 2}px)`;
-        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Align all horizontally
+        sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelHorizontalSpacing) / 2}px)`; // Center horizontally
+        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position vertically
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
@@ -46,8 +40,6 @@ energyLevels.forEach((level, i) => {
             info.innerHTML = `<h2>Sublevel: ${sublevel.toUpperCase()}</h2><p>Electrons: ${level.electrons[j]}</p>`;
         });
 
-        circle.appendChild(sub);
+        diagram.appendChild(sub);
     });
-
-    diagram.appendChild(circle);
 });
