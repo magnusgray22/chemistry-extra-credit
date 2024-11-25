@@ -10,10 +10,10 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 400; // Position of the first horizontal line
-const verticalSpacing = 50; // Spacing between each horizontal line
-const dottedCircleSize = 80; // Base size for smaller dotted circles
-const sublevelHorizontalSpacing = 100; // Space between sublevels on the same line
+const baseTopOffset = 20; // Position of the first horizontal line
+const verticalSpacing = 30; // Spacing between each horizontal line
+const dottedCircleSize = 50; // Base size for smaller dotted circles
+const sublevelHorizontalSpacing = 80; // Space between sublevels on the same line
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -23,9 +23,9 @@ energyLevels.forEach((level, i) => {
 
     // Set the size of the dotted circle
     const size = dottedCircleSize; // Smaller dotted circles
-    circle.style.width = `${size}px`;
-    circle.style.height = `${size}px`;
-    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position each line higher
+    circle.style.width = `${size}px`;20
+    circle.style.height = `${size}px`;30
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`;40 // Position each line higher
     circle.style.left = `50%`; // Center horizontally
     circle.style.transform = `translate(-50%, 0)`; // Align horizontally
 
@@ -35,7 +35,7 @@ energyLevels.forEach((level, i) => {
         sub.classList.add("sublevel", sublevel);
 
         // Dynamically adjust sublevel size
-        const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger
+        const sublevelSize = 20 + j * 10; // Sublevels grow slightly larger
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
