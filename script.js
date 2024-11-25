@@ -9,10 +9,11 @@ const energyLevels = [
     { level: 4, sublevels: ["s", "p", "d", "f"], electrons: [2, 6, 10, 14] }
 ];
 
-// Horizontal alignment settings
-const baseLeftOffset = 100; // Starting position for the first circle
-const horizontalSpacing = 150; // Space between circles
-const baseTopPosition = 450; // Align all circles along the same horizontal line
+// Center alignment and sizing settings
+const baseTopOffset = 150; // Starting position for the first circle
+const verticalSpacing = 150; // Space between circles vertically
+const baseCircleSize = 100; // Base size for the first circle
+const circleSizeIncrement = 50; // Size increment for each level
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -20,28 +21,30 @@ energyLevels.forEach((level, i) => {
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
 
-    // Set the size of the energy level
-    const size = 80 + i * 20; // Circles grow slightly bigger for higher levels
+    // Set energy level size and position
+    const size = baseCircleSize + i * circleSizeIncrement;
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`;
+    circle.style.left = `50%`; // Center horizontally
+    circle.style.transform = `translate(-50%, 0)`; // Center horizontally with transform
 
-    // Position circles horizontally along the bottom
-    circle.style.left = `${baseLeftOffset + i * horizontalSpacing}px`; // Increment left position
-    circle.style.top = `${baseTopPosition}px`; // Align to the bottom line
-
-    // Add sublevels inside each circle
+    // Add sublevels inside the circle
+    const sublevelSpacing = size / (level.sublevels.length + 1); // Space out sublevels
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
 
-        // Set size for sublevels and align them centrally within the circle
-        const sublevelSize = 20 + j * 10; // Sublevels grow slightly larger
+        // Dynamically adjust sublevel size
+        const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger for each type
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
-        sub.style.left = `${(size - sublevelSize) / 2}px`; // Center horizontally
-        sub.style.top = `${(size - sublevelSize) / 2}px`; // Center vertically
 
-        // Add text for the sublevel
+        // Position sublevels evenly within the circle
+        sub.style.left = `${(size - sublevelSize) / 2}px`;
+        sub.style.top = `${j * sublevelSpacing}px`;
+
+        // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
 
         // Hover effect
