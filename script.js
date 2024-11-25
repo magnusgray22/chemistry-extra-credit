@@ -16,8 +16,8 @@ energyLevels.forEach((level, i) => {
     circle.classList.add("energy-level");
     circle.style.width = `${100 + i * 80}px`;
     circle.style.height = `${100 + i * 80}px`;
-    circle.style.top = `${300 - (50 + i * 40)}px`; // Adjust to move circles down
-    circle.style.left = `${200 - (50 + i * 40)}px`;
+    circle.style.top = `${200 + i * 50}px`; // Adjust to move circles lower
+    circle.style.left = `200px`;
 
     // Add sublevels
     const sublevelAngleStep = 360 / level.sublevels.length; // Equal spacing for sublevels
