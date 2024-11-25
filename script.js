@@ -10,26 +10,25 @@ const energyLevels = [
 ];
 
 // Layout settings
-const baseTopOffset = 400; // Position for the first horizontal line
-const verticalSpacing = 100; // Vertical spacing between each horizontal line
-const sublevelSpacing = 50; // 1 cm horizontal spacing in pixels
-const baseCircleSize = 100; // Base size of the dotted circle (smaller size)
+const baseTopOffset = 400; // Vertical starting position for first dotted circle
+const verticalSpacing = 100; // Vertical spacing between each line of sublevels
+const dottedCircleSize = 50; // SMALL size for the dotted circles
+const sublevelSpacing = 50; // 1 cm spacing for sublevels
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
-    // Create the energy level circle
+    // Create the energy level (dotted) circle
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
 
     // Set the size of the dotted circle
-    const size = baseCircleSize + i * 20; // Increment size slightly for each level
-    circle.style.width = `${size}px`;
-    circle.style.height = `${size}px`;
+    circle.style.width = `${dottedCircleSize}px`;
+    circle.style.height = `${dottedCircleSize}px`;
     circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position vertically
     circle.style.left = `50%`; // Center horizontally
-    circle.style.transform = `translate(-50%, 0)`; // Align horizontally in center
+    circle.style.transform = `translate(-50%, 0)`; // Center horizontally
 
-    // Add sublevels in a horizontal line
+    // Add sublevels to the circle
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
@@ -39,11 +38,11 @@ energyLevels.forEach((level, i) => {
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
-        // Position sublevels horizontally
-        const xOffset = sublevelSpacing * j; // Add spacing for each sublevel
+        // Position sublevels in a horizontal line
+        const xOffset = sublevelSpacing * j; // 1 cm spacing between sublevels
         sub.style.position = "absolute";
         sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelSpacing) / 2}px)`;
-        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`;
+        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Align all horizontally
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
