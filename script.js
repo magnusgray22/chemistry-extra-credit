@@ -16,7 +16,7 @@ energyLevels.forEach((level, i) => {
     circle.classList.add("energy-level");
     circle.style.width = `${100 + i * 80}px`;
     circle.style.height = `${100 + i * 80}px`;
-    circle.style.top = `${200 - (50 + i * 40)}px`;
+    circle.style.top = `${300 - (50 + i * 40)}px`; // Adjust to move circles down
     circle.style.left = `${200 - (50 + i * 40)}px`;
 
     // Add sublevels
@@ -30,7 +30,7 @@ energyLevels.forEach((level, i) => {
         const angle = j * sublevelAngleStep;
         const radius = (50 + i * 40) / 2; // Adjust radius for each energy level
         const x = 200 + radius * Math.cos((angle * Math.PI) / 180) - 20; // Adjust for sublevel size
-        const y = 200 + radius * Math.sin((angle * Math.PI) / 180) - 20;
+        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - 20;
         sub.style.left = `${x}px`;
         sub.style.top = `${y}px`;
 
