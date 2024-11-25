@@ -14,14 +14,14 @@ energyLevels.forEach((level, i) => {
     // Create the energy level circle
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
-    circle.style.width = `${150 + i * 100}px`; // Energy level size grows
+    circle.style.width = `${150 + i * 100}px`; // Adjust size incrementally
     circle.style.height = `${150 + i * 100}px`;
-    circle.style.top = `${150 + i * 60}px`; // Drop circles lower
-    circle.style.left = `250px`; // Center horizontally
+    circle.style.top = `${150 + i * 60}px`; // Lower circles a bit for readability
+    circle.style.left = `250px`; // Center circles horizontally
 
     // Add sublevels
     const sublevelAngleStep = 360 / level.sublevels.length; // Even spacing for sublevels
-    const radius = (150 + i * 100) / 2 - 50; // Keep sublevels inside the dotted circle
+    const radius = (150 + i * 100) / 2 - 50; // Keep sublevels within dotted circle
 
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
@@ -32,8 +32,8 @@ energyLevels.forEach((level, i) => {
         const angle = j * sublevelAngleStep;
 
         // Calculate position based on angle and radius
-        const x = 250 + radius * Math.cos((angle * Math.PI) / 180) - 20; // Adjust for sublevel size
-        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - 20;
+        const x = 250 + radius * Math.cos((angle * Math.PI) / 180) - sub.offsetWidth / 2;
+        const y = 300 + radius * Math.sin((angle * Math.PI) / 180) - sub.offsetHeight / 2;
 
         // Apply position
         sub.style.left = `${x}px`;
