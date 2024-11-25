@@ -9,39 +9,39 @@ const energyLevels = [
     { level: 4, sublevels: ["s", "p", "d", "f"], electrons: [2, 6, 10, 14] }
 ];
 
+// Horizontal alignment settings
+const baseLeftOffset = 100; // Starting position for the first circle
+const horizontalSpacing = 150; // Space between circles
+const baseTopPosition = 450; // Align all circles along the same horizontal line
+
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
     // Create the energy level circle
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
 
-    // Set energy level size
-    circle.style.width = `${150 + i * 100}px`; // Increase size incrementally
-    circle.style.height = `${150 + i * 100}px`;
+    // Set the size of the energy level
+    const size = 80 + i * 20; // Circles grow slightly bigger for higher levels
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
 
-    // Drop circles lower on the page
-    circle.style.top = `${200 + i * 70}px`;
-    circle.style.left = `250px`; // Center horizontally
+    // Position circles horizontally along the bottom
+    circle.style.left = `${baseLeftOffset + i * horizontalSpacing}px`; // Increment left position
+    circle.style.top = `${baseTopPosition}px`; // Align to the bottom line
 
-    // Add sublevels
-    const sublevelSpacing = 90; // Fixed horizontal spacing for sublevels
-    const baseRadius = (150 + i * 100) / 2 - 50; // Sublevels stay inside the circle
-
+    // Add sublevels inside each circle
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
 
-        // Dynamically adjust sublevel size
-        const sizeIncrement = 10 * j; // Each subsequent sublevel grows slightly
-        const sublevelSize = 40 + sizeIncrement;
-
-        // Apply size and position
+        // Set size for sublevels and align them centrally within the circle
+        const sublevelSize = 20 + j * 10; // Sublevels grow slightly larger
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
-        sub.style.left = `${250 + j * sublevelSpacing}px`; // Position evenly spaced
-        sub.style.top = `${300 + i * 70}px`; // Align sublevels on the same line
+        sub.style.left = `${(size - sublevelSize) / 2}px`; // Center horizontally
+        sub.style.top = `${(size - sublevelSize) / 2}px`; // Center vertically
 
-        // Add text to sublevel
+        // Add text for the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
 
         // Hover effect
