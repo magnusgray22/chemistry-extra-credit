@@ -13,18 +13,18 @@ const energyLevels = [
 energyLevels.forEach((level, i) => {
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
-    circle.style.width = `${50 + i * 50}px`;
-    circle.style.height = `${50 + i * 50}px`;
-    circle.style.top = `${150 - i * 25}px`;
-    circle.style.left = `${150 - i * 25}px`;
+    circle.style.width = `${75 + i * 50}px`;
+    circle.style.height = `${75 + i * 50}px`;
+    circle.style.top = `${175 - i * 25}px`;
+    circle.style.left = `${175 - i * 25}px`;
 
     // Add sublevels
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
-        sub.classList.add("sublevel");
+        sub.classList.add("sublevel", sublevel);
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
         sub.addEventListener("mouseover", () => {
-            info.innerHTML = `<h2>Sublevel: ${sublevel}</h2><p>Electrons: ${level.electrons[j]}</p>`;
+            info.innerHTML = `<h2>Sublevel: ${sublevel.toUpperCase()}</h2><p>Electrons: ${level.electrons[j]}</p>`;
         });
         circle.appendChild(sub);
     });
