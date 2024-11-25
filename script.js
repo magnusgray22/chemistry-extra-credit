@@ -9,11 +9,11 @@ const energyLevels = [
     { level: 4, sublevels: ["s", "p", "d", "f"], electrons: [2, 6, 10, 14] }
 ];
 
-// Settings for layout and alignment
-const baseTopOffset = 200; // Position of the first energy level
-const verticalSpacing = 150; // Spacing between energy levels
-const baseCircleSize = 200; // Base size of the dotted circle
-const circleSizeIncrement = 100; // Size increment for each level
+// Layout settings
+const baseTopOffset = 400; // Position for the first horizontal line
+const verticalSpacing = 100; // Vertical spacing between each horizontal line
+const sublevelSpacing = 50; // 1 cm horizontal spacing in pixels
+const baseCircleSize = 100; // Base size of the dotted circle (smaller size)
 
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
@@ -21,34 +21,29 @@ energyLevels.forEach((level, i) => {
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
 
-    // Set size and position for the circle
-    const size = baseCircleSize + i * circleSizeIncrement;
+    // Set the size of the dotted circle
+    const size = baseCircleSize + i * 20; // Increment size slightly for each level
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
-    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`;
+    circle.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position vertically
     circle.style.left = `50%`; // Center horizontally
-    circle.style.transform = `translate(-50%, 0)`; // Align center horizontally
+    circle.style.transform = `translate(-50%, 0)`; // Align horizontally in center
 
-    // Add sublevels to the circle
-    const radius = size / 2 - 50; // Adjust radius for sublevels
-    const sublevelCount = level.sublevels.length; // Number of sublevels to include
-    const angleStep = 360 / sublevelCount; // Angle between sublevels
-
+    // Add sublevels in a horizontal line
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
 
         // Dynamically adjust sublevel size
-        const sublevelSize = 30 + j * 10; // Sublevels grow slightly for each type
+        const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
-        // Calculate position for sublevels
-        const angle = j * angleStep;
-        const x = radius * Math.cos((angle * Math.PI) / 180); // X offset
-        const y = radius * Math.sin((angle * Math.PI) / 180); // Y offset
-        sub.style.left = `${(size - sublevelSize) / 2 + x}px`;
-        sub.style.top = `${(size - sublevelSize) / 2 + y}px`;
+        // Position sublevels horizontally
+        const xOffset = sublevelSpacing * j; // Add spacing for each sublevel
+        sub.style.position = "absolute";
+        sub.style.left = `calc(50% + ${xOffset - (level.sublevels.length * sublevelSpacing) / 2}px)`;
+        sub.style.top = `${baseTopOffset + i * verticalSpacing}px`;
 
         // Add text to the sublevel
         sub.textContent = `${sublevel} (${level.electrons[j]})`;
