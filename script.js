@@ -21,18 +21,6 @@ energyLevels.forEach((level, i) => {
     const circle = document.createElement("div");
     circle.classList.add("energy-level");
 
-    const dottedCircleSize = 50; // Base size for smaller dotted circles
-const circleSizeIncrement = 20; // Increment for larger dotted circles
-
-energyLevels.forEach((level, i) => {
-    // Adjust the size of each dotted circle
-    const size = dottedCircleSize + i * circleSizeIncrement; // Larger size for higher levels
-    const circle = document.querySelector(`.energy-level:nth-child(${i + 1})`);
-
-    if (circle) {
-        circle.style.width = `${size}px`;
-        circle.style.height = `${size}px`;
-    }
 
     // Add sublevels to the horizontal line
     level.sublevels.forEach((sublevel, j) => {
@@ -40,7 +28,7 @@ energyLevels.forEach((level, i) => {
         sub.classList.add("sublevel", sublevel);
 
         // Dynamically adjust sublevel size
-        const sublevelSize = 20 + j * 10; // Sublevels grow slightly larger
+        const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
