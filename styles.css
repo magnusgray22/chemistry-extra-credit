@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -27,8 +28,8 @@ main {
 
 #diagram {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     margin: 20px auto;
     background: #e0fbfc;
     border-radius: 50%;
@@ -42,17 +43,29 @@ main {
     transform: translate(-50%, -50%);
 }
 
+/* Sublevel Styles */
 .sublevel {
-    display: inline-block;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-size: 0.9rem;
     font-weight: bold;
+    border-radius: 50%;
     cursor: pointer;
+    text-transform: uppercase;
+    border: 2px solid white;
 }
 
+.sublevel.s { background: #ff6b6b; }
+.sublevel.p { background: #6bffb8; }
+.sublevel.d { background: #6b8bff; }
+.sublevel.f { background: #ffbf6b; }
+
+/* Info Section */
 #info {
     margin-top: 20px;
     padding: 15px;
@@ -61,9 +74,3 @@ main {
     width: 80%;
     font-size: 1.2rem;
 }
-
-/* Colors for each sublevel */
-.sublevel.s { background: #ff6b6b; }
-.sublevel.p { background: #6bffb8; }
-.sublevel.d { background: #6b8bff; }
-.sublevel.f { background: #ffbf6b; }
