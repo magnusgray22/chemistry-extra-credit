@@ -21,6 +21,29 @@ energyLevels.forEach((level, i) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel);
 
+        // Dynamically adjust sublevel size and shape
+        let shape, electronCapacity;
+        if (sublevel === "s") {
+            shape = "Sphere"; // Shape for s orbital
+            electronCapacity = 2; // Max electrons
+        } else if (sublevel === "p") {
+            shape = "Dumbbell"; // Shape for p orbital
+            electronCapacity = 6; // Max electrons
+        } else if (sublevel === "d") {
+            shape = "Cloverleaf"; // Shape for d orbital
+            electronCapacity = 10; // Max electrons
+        } else if (sublevel === "f") {
+            shape = "Complex"; // Shape for f orbital
+            electronCapacity = 14; // Max electrons
+        }
+
+        // Add shape and capacity to tooltip or hover info
+        sub.setAttribute("data-shape", shape);
+        sub.setAttribute(
+            "title",
+            `${sublevel.toUpperCase()} Orbital (${shape}, Max ${electronCapacity} electrons)`
+        );
+
         // Dynamically adjust sublevel size
         const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger
         sub.style.width = `${sublevelSize}px`;
@@ -33,16 +56,17 @@ energyLevels.forEach((level, i) => {
         sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position each row below the previous one
 
         // Add text to the sublevel
-        sub.textContent = `${sublevel} (${level.electrons[j]})`;
+        sub.textContent = `${sublevel.toUpperCase()} (${level.electrons[j]} electrons)`;
 
         // Hover effect
         sub.addEventListener("mouseover", () => {
-            info.innerHTML = `<h2>Sublevel: ${sublevel.toUpperCase()}</h2><p>Electrons: ${level.electrons[j]}</p>`;
+            info.innerHTML = `<h2>${sublevel.toUpperCase()} Orbital</h2><p>Shape: ${shape}</p><p>Max Electrons: ${electronCapacity}</p>`;
         });
 
         diagram.appendChild(sub);
     });
 });
+
 // Add Magnus Gray, Boston Heal, and B4
 const footerText = document.createElement("div");
 footerText.style.position = "absolute";
@@ -55,6 +79,3 @@ footerText.textContent = "Magnus Gray, Boston Heal, B4";
 
 // Append to the diagram
 diagram.appendChild(footerText);
-
-
-
