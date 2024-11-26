@@ -19,33 +19,10 @@ energyLevels.forEach((level, i) => {
     // Add sublevels to the horizontal line
     level.sublevels.forEach((sublevel, j) => {
         const sub = document.createElement("div");
-        sub.classList.add("sublevel", sublevel);
-
-        // Dynamically adjust sublevel size and shape
-        let shape, electronCapacity;
-        if (sublevel === "s") {
-            shape = "Sphere"; // Shape for s orbital
-            electronCapacity = 2; // Max electrons
-        } else if (sublevel === "p") {
-            shape = "Dumbbell"; // Shape for p orbital
-            electronCapacity = 6; // Max electrons
-        } else if (sublevel === "d") {
-            shape = "Cloverleaf"; // Shape for d orbital
-            electronCapacity = 10; // Max electrons
-        } else if (sublevel === "f") {
-            shape = "Complex"; // Shape for f orbital
-            electronCapacity = 14; // Max electrons
-        }
-
-        // Add shape and capacity to tooltip or hover info
-        sub.setAttribute("data-shape", shape);
-        sub.setAttribute(
-            "title",
-            `${sublevel.toUpperCase()} Orbital (${shape}, Max ${electronCapacity} electrons)`
-        );
+        sub.classList.add("sublevel", sublevel); // Add class for orbital shapes
 
         // Dynamically adjust sublevel size
-        const sublevelSize = 30 + j * 10; // Sublevels grow slightly larger
+        const sublevelSize = 40; // Fixed size for sublevels
         sub.style.width = `${sublevelSize}px`;
         sub.style.height = `${sublevelSize}px`;
 
@@ -56,11 +33,11 @@ energyLevels.forEach((level, i) => {
         sub.style.top = `${baseTopOffset + i * verticalSpacing}px`; // Position each row below the previous one
 
         // Add text to the sublevel
-        sub.textContent = `${sublevel.toUpperCase()} (${level.electrons[j]} electrons)`;
+        sub.textContent = `${sublevel.toUpperCase()}`;
 
         // Hover effect
         sub.addEventListener("mouseover", () => {
-            info.innerHTML = `<h2>${sublevel.toUpperCase()} Orbital</h2><p>Shape: ${shape}</p><p>Max Electrons: ${electronCapacity}</p>`;
+            info.innerHTML = `<h2>${sublevel.toUpperCase()} Orbital</h2>`;
         });
 
         diagram.appendChild(sub);
