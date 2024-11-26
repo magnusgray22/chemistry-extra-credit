@@ -63,35 +63,49 @@ main {
     background: #ff4d4d; /* Bright red */
     width: 40px;
     height: 40px;
+     width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Sphere shape for s orbital */
 }
 
 .sublevel.p {
     background: #4da6ff; /* Bright blue */
     width: 50px;
     height: 50px;
+     width: 60px;
+  height: 30px;
+  border-radius: 50px / 25px; /* Dumbbell shape for p orbital */
+  background: linear-gradient(to right, rgba(0, 128, 255, 0.7), rgba(0, 255, 128, 0.7));
 }
 
 .sublevel.d {
     background: #4dff4d; /* Bright green */
     width: 60px;
     height: 60px;
+    width: 50px;
+  height: 50px;
+  clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); /* Cloverleaf approximation for d orbital */
+  background: linear-gradient(45deg, rgba(255, 0, 128, 0.7), rgba(0, 128, 255, 0.7))
 }
 
 .sublevel.f {
     background: #ffb84d; /* Bright orange */
     width: 70px;
     height: 70px;
+    width: 80px;
+  height: 80px;
+  clip-path: polygon(
+    50% 0%,
+    70% 20%,
+    85% 50%,
+    70% 80%,
+    50% 100%,
+    30% 80%,
+    15% 50%,
+    30% 20%
 }
 
-/* Info Section */
-#info {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #005f73;
-    background: #edf2f4;
-    width: 80%;
-    font-size: 1.2rem;
-/* Base styles for sublevels */
+/* Base styles for sublevels (unchanged) */
 .sublevel {
   display: flex;
   justify-content: center;
@@ -103,38 +117,8 @@ main {
   position: absolute;
 }
 
-/* Specific shapes for each orbital */
-.sublevel.s {
-  border-radius: 50%; /* Sphere shape */
-}
-
-.sublevel.p {
-  width: 60px;
-  height: 30px;
-  border-radius: 50px / 25px; /* Dumbbell shape */
-  background: linear-gradient(to right, rgba(0, 128, 255, 0.7), rgba(0, 255, 128, 0.7));
-}
-
-.sublevel.d {
-  width: 50px;
-  height: 50px;
-  clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); /* Cloverleaf approximation */
-  background: linear-gradient(45deg, rgba(255, 0, 128, 0.7), rgba(0, 128, 255, 0.7));
-}
-
-.sublevel.f {
-  width: 80px;
-  height: 80px;
-  clip-path: polygon(
-    50% 0%,
-    70% 20%,
-    85% 50%,
-    70% 80%,
-    50% 100%,
-    30% 80%,
-    15% 50%,
-    30% 20%
-  ); /* Complex f shape approximation */
+  ); /* Complex lobed shape for f orbital */
   background: radial-gradient(circle, rgba(255, 128, 0, 0.7), rgba(128, 0, 255, 0.7));
 }
+
 
