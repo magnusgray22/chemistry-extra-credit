@@ -120,5 +120,57 @@ main {
   ); /* Complex lobed shape for f orbital */
   background: radial-gradient(circle, rgba(255, 128, 0, 0.7), rgba(128, 0, 255, 0.7));
 }
+/* Base styles for sublevels */
+.sublevel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  background-color: rgba(0, 128, 255, 0.7);
+  position: absolute;
+}
+
+/* Specific shapes for each orbital */
+
+/* S Orbital (Sphere) */
+.sublevel.s {
+  border-radius: 50%; /* Perfect sphere */
+  background: radial-gradient(circle, rgba(34, 139, 34, 0.8), rgba(0, 128, 0, 0.9)); /* Green gradient for s orbital */
+}
+
+/* P Orbital (Dumbbell) */
+.sublevel.p {
+  width: 60px;
+  height: 30px;
+  border-radius: 50px / 25px; /* Elliptical dumbbell shape */
+  background: linear-gradient(to right, rgba(0, 0, 255, 0.7), rgba(0, 128, 255, 0.8)); /* Blue gradient */
+}
+
+/* D Orbital (Cloverleaf) */
+.sublevel.d {
+  width: 60px;
+  height: 60px;
+  clip-path: polygon(50% 0%, 75% 25%, 50% 50%, 25% 25%, 50% 0%, 50% 50%, 75% 75%, 50% 100%, 25% 75%); /* Cloverleaf approximation */
+  background: linear-gradient(45deg, rgba(0, 0, 139, 0.8), rgba(255, 165, 0, 0.9)); /* Blue and orange gradient */
+}
+
+/* F Orbital (Complex shape) */
+.sublevel.f {
+  width: 80px;
+  height: 80px;
+  clip-path: polygon(
+    50% 0%, 
+    65% 15%, 
+    75% 50%, 
+    65% 85%, 
+    50% 100%, 
+    35% 85%, 
+    25% 50%, 
+    35% 15%
+  ); /* Complex lobed structure */
+  background: conic-gradient(from 0deg, rgba(34, 139, 34, 0.7), rgba(0, 255, 0, 0.7), rgba(0, 0, 255, 0.7), rgba(255, 215, 0, 0.7)); /* Multicolor gradient for complexity */
+}
 
 
