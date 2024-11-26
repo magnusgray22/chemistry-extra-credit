@@ -91,7 +91,6 @@ main {
     background: #edf2f4;
     width: 80%;
     font-size: 1.2rem;
-}
 /* Base styles for sublevels */
 .sublevel {
   display: flex;
@@ -100,44 +99,42 @@ main {
   color: white;
   font-size: 12px;
   text-align: center;
+  background-color: rgba(0, 128, 255, 0.7);
   position: absolute;
-  border-radius: 50%; /* Default to circular (for s) */
-  background-color: rgba(0, 128, 255, 0.7); /* Light blue for visibility */
 }
 
 /* Specific shapes for each orbital */
 .sublevel.s {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%; /* Sphere */
+  border-radius: 50%; /* Sphere shape */
 }
 
 .sublevel.p {
   width: 60px;
   height: 30px;
-  border-radius: 50%; /* Dumbbell-like */
-  transform: rotate(0deg); /* Horizontal dumbbell */
+  border-radius: 50px / 25px; /* Dumbbell shape */
+  background: linear-gradient(to right, rgba(0, 128, 255, 0.7), rgba(0, 255, 128, 0.7));
 }
 
 .sublevel.d {
-  width: 70px;
+  width: 50px;
   height: 50px;
-  background: linear-gradient(45deg, rgba(0, 128, 255, 0.7), rgba(255, 255, 0, 0.7));
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Cloverleaf approximation */
+  clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); /* Cloverleaf approximation */
+  background: linear-gradient(45deg, rgba(255, 0, 128, 0.7), rgba(0, 128, 255, 0.7));
 }
 
 .sublevel.f {
   width: 80px;
   height: 80px;
-  background: conic-gradient(rgba(0, 128, 255, 0.7), rgba(255, 0, 128, 0.7));
   clip-path: polygon(
     50% 0%,
-    75% 25%,
-    100% 50%,
-    75% 75%,
+    70% 20%,
+    85% 50%,
+    70% 80%,
     50% 100%,
-    25% 75%,
-    0% 50%,
-    25% 25%
-  ); /* Complex pattern for f */
+    30% 80%,
+    15% 50%,
+    30% 20%
+  ); /* Complex f shape approximation */
+  background: radial-gradient(circle, rgba(255, 128, 0, 0.7), rgba(128, 0, 255, 0.7));
 }
+
