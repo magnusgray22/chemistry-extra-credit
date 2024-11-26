@@ -21,6 +21,29 @@ energyLevels.forEach((level, i) => {
         const sub = document.createElement("div");
         sub.classList.add("sublevel", sublevel); // Add class for orbital shapes
 
+        // Dynamically assign shape and electron capacity
+        let shape, electronCapacity;
+        if (sublevel === "s") {
+            shape = "Sphere"; // Shape for s orbital
+            electronCapacity = 2; // Max electrons
+        } else if (sublevel === "p") {
+            shape = "Dumbbell"; // Shape for p orbital
+            electronCapacity = 6; // Max electrons
+        } else if (sublevel === "d") {
+            shape = "Cloverleaf"; // Shape for d orbital
+            electronCapacity = 10; // Max electrons
+        } else if (sublevel === "f") {
+            shape = "Complex"; // Shape for f orbital
+            electronCapacity = 14; // Max electrons
+        }
+
+        // Add shape and capacity to tooltip or hover info
+        sub.setAttribute("data-shape", shape);
+        sub.setAttribute(
+            "title",
+            `${sublevel.toUpperCase()} Orbital (${shape}, Max ${electronCapacity} electrons)`
+        );
+
         // Dynamically adjust sublevel size
         const sublevelSize = 40; // Fixed size for sublevels
         sub.style.width = `${sublevelSize}px`;
@@ -37,7 +60,7 @@ energyLevels.forEach((level, i) => {
 
         // Hover effect
         sub.addEventListener("mouseover", () => {
-            info.innerHTML = `<h2>${sublevel.toUpperCase()} Orbital</h2>`;
+            info.innerHTML = `<h2>${sublevel.toUpperCase()} Orbital</h2><p>Shape: ${shape}</p><p>Max Electrons: ${electronCapacity}</p>`;
         });
 
         diagram.appendChild(sub);
