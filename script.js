@@ -14,28 +14,6 @@ const baseTopOffset = 100; // Start at the top of the main background circle
 const verticalSpacing = 80; // Vertical spacing between rows
 const sublevelHorizontalSpacing = 120; // Horizontal spacing between sublevels
 
-
-        // Dynamically adjust sublevel size and shape
-        let shape, electronCapacity;
-        if (sublevel === "s") {
-            shape = "Sphere"; // Shape for s orbital
-            electronCapacity = 2; // Max electrons
-        } else if (sublevel === "p") {
-            shape = "Dumbbell"; // Shape for p orbital
-            electronCapacity = 6; // Max electrons
-        } else if (sublevel === "d") {
-            shape = "Cloverleaf"; // Shape for d orbital
-            electronCapacity = 10; // Max electrons
-        } else if (sublevel === "f") {
-            shape = "Complex"; // Shape for f orbital
-            electronCapacity = 14; // Max electrons
-        }
-
-        
-});
-
-
-
 // Generate energy levels and sublevels
 energyLevels.forEach((level, i) => {
     // Add sublevels to the horizontal line
@@ -64,5 +42,19 @@ energyLevels.forEach((level, i) => {
 
         diagram.appendChild(sub);
     });
+});
+// Add Magnus Gray, Boston Heal, and B4
+const footerText = document.createElement("div");
+footerText.style.position = "absolute";
+footerText.style.bottom = "10px"; // Position near the bottom
+footerText.style.left = "50%"; // Center horizontally
+footerText.style.transform = "translateX(-50%)"; // Adjust for centering
+footerText.style.fontSize = "18px"; // Adjust text size
+footerText.style.fontWeight = "bold"; // Bold text
+footerText.textContent = "Magnus Gray, Boston Heal, B4";
+
+// Append to the diagram
+diagram.appendChild(footerText);
+
 
 
